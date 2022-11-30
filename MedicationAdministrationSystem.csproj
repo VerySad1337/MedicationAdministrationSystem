@@ -127,6 +127,7 @@
     </Compile>
     <Compile Include="Models\AddMedicine.cs" />
     <Compile Include="Models\AddRoutes.cs" />
+    <Compile Include="Models\DisplayRoutes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
