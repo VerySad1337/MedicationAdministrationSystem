@@ -35,30 +35,5 @@ namespace MedicationAdministrationSystem.Controllers
             return View();
         }
 
-        public ActionResult addMedication()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult addMedication(AddMedicine medicine)
-        {
-            SqlConnection dbConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RCMSConnectionString"].ConnectionString);
-            dbConnection.Open();
-            string getAllRoutes = "Select routemethod from routes";
-            SqlCommand displayRoute = new SqlCommand(getAllRoutes, dbConnection);
-            var myRoute = displayRoute.ExecuteScalar();
-            ViewBag.myRoutes = new SelectList(myRoute.ToString());
-
-
-            SqlCommand command = dbConnection.CreateCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText = "Insert into Medication(MedicineName, RouteID) values('" + medicine.medicineName + medicine.RouteID+ "')";
-            ViewData["Message"] = "Added successfully!";
-            command.ExecuteNonQuery();
-            dbConnection.Close();
-            ModelState.Clear();
-            return View();
-        }
     }
 }
